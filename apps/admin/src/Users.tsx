@@ -23,7 +23,12 @@ export function Users() {
     }
   );
 
-  const rows = (data?.users?.data ?? []).map((u) => <UserItem key={u?.id} userRef={u} />);
+  const rows = (data?.users?.data ?? []).map((u) => {
+    if (!u) {
+      return null;
+    }
+    return <UserItem key={u?.id} userRef={u} />;
+  });
 
   return <div>{rows}</div>;
 }
