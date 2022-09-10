@@ -1,0 +1,20 @@
+export function ErrorFallback({
+  error,
+  resetErrorBoundary,
+}: {
+  error: Error;
+  resetErrorBoundary: () => void;
+}) {
+  return (
+    <div role='alert'>
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  );
+}
+
+export const myErrorHandler = (error: Error, info: { componentStack: string }) => {
+  // Do something with the error
+  // E.g. log to an error logging client here
+};

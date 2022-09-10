@@ -1,8 +1,8 @@
+import { Link } from '@tanstack/react-location';
 import { CounterButton } from 'ui';
-import { Users, Viewer } from '../components';
+import { Viewer } from '../components';
 
 export function HomePage() {
-  
   return (
     <div className='container'>
       <main className='m-8'>
@@ -11,10 +11,6 @@ export function HomePage() {
         </div>
         <div className='mb-4 flex bg-gray-100 p-4'>
           <CounterButton />
-        </div>
-
-        <div className='border bg-blue-100 p-4'>
-          <Users />
         </div>
       </main>
     </div>
