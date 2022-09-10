@@ -7,7 +7,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CounterButton />
+        <div
+          style={{
+            background: `rgba(255,255,255,.05)`,
+            borderRadius: `8px`,
+            padding: 16,
+          }}
+        >
+          <p>
+            This is component is from <code>ui</code>
+          </p>
+          <p>
+            <CounterButton />
+          </p>
+        </div>
+        
         <Users />
       </header>
     </div>

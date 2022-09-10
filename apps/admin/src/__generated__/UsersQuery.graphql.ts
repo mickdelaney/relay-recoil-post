@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c257cf7e56c75d7f963636d250840da9>>
+ * @generated SignedSource<<a2082738ce8b70f5430c4cbab51d0aa4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -103,7 +103,14 @@ return {
             "plural": true,
             "selections": [
               (v0/*: any*/),
-              (v1/*: any*/)
+              (v1/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "email",
+                "storageKey": null
+              }
             ],
             "storageKey": null
           }
@@ -113,12 +120,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "39035914f396bd0243c4476b3f44eac8",
+    "cacheID": "6e2d7ba60560ec09751f10b7629c9a60",
     "id": null,
     "metadata": {},
     "name": "UsersQuery",
     "operationKind": "query",
-    "text": "query UsersQuery {\n  users {\n    data {\n      id\n      name\n      ...UserItem_user\n    }\n  }\n}\n\nfragment UserItem_user on User {\n  id\n  name\n}\n"
+    "text": "query UsersQuery {\n  users {\n    data {\n      id\n      name\n      ...UserItem_user\n    }\n  }\n}\n\nfragment UserItem_user on User {\n  id\n  name\n  email\n}\n"
   }
 };
 })();
