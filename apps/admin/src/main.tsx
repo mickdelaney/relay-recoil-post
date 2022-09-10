@@ -1,6 +1,9 @@
 import * as React from "react";
 import { createRoot } from 'react-dom/client';
 import { RelayEnvironmentProvider } from "react-relay";
+import {
+  RecoilRoot,
+} from 'recoil';
 
 import "./index.css";
 import RelayEnvironment from "./RelayEnvironment";
@@ -14,8 +17,10 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <RelayEnvironmentProvider environment={RelayEnvironment}>
-      <App />
-    </RelayEnvironmentProvider>    
+    <RecoilRoot>
+      <RelayEnvironmentProvider environment={RelayEnvironment}>
+        <App />
+      </RelayEnvironmentProvider>    
+    </RecoilRoot>
   </React.StrictMode>,
 );

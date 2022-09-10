@@ -1,7 +1,16 @@
 import * as React from "react";
+import {
+  atom,
+  useRecoilState,
+} from 'recoil';
+
+export const buttonCountState = atom({
+  key: 'buttonCount', // unique ID (with respect to other atoms/selectors)
+  default: 0, // default value (aka initial value)
+});
 
 export const CounterButton = () => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = useRecoilState(buttonCountState);
   return (
     <button 
       className="bg-white text-blue-500 border p-3"
