@@ -22,11 +22,12 @@ type Props = {
 export const UserItem: FunctionComponent<Props> = ({ userRef }) => {
   const data = useFragment<UserItem_user$key>(fragment, userRef);
   return (
-    <div key={data.id}>
+    <div className='border bg-white p-2 mb-2' key={data.id}>
       <h3>{data.name}</h3>
-      <p>{data.email}</p>
-      <p>{data.phone}</p>
-      <p>{data.company?.name}</p>
+      <div className='flex items-center justify-between'>
+        <div><p>{data.email}</p></div>
+        <div><p>{data.phone}</p></div>
+      </div>
     </div>
   );
 };

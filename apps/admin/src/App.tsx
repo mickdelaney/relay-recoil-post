@@ -5,25 +5,23 @@ import { Users } from "./Users";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div
-          style={{
-            background: `rgba(255,255,255,.05)`,
-            borderRadius: `8px`,
-            padding: 16,
-          }}
-        >
-          <p>
-            This is component is from <code>ui</code>
-          </p>
-          <p>
-            <CounterButton />
-          </p>
-        </div>
+    <div className="container">
+      <main className="m-8">
         
-        <Users />
-      </header>
+        <div className="flex bg-gray-100 mb-4 p-4">
+
+          <CounterButton />
+
+        </div>
+
+        <div className="bg-blue-100 border p-4">
+          
+          <Users />        
+
+        </div>
+
+  
+      </main>
     </div>
   );
 }
