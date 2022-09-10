@@ -5,7 +5,9 @@
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "deploy": "vercel deploy dist --team=turborepo --confirm",
-    "dev": "vite --host 0.0.0.0 --port 3001 --clearScreen false",
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:vite": "vite --host 0.0.0.0 --port 3001 --clearScreen false",
+    "dev:relay": "relay-compiler --watch",
     "relay": "relay-compiler",
     "build": "relay-compiler && tsc --noEmit && vite build",
     "lint": "tsc --noEmit && TIMING=1 eslint src/**/*.ts* --fix"
@@ -23,6 +25,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-relay": "^14.1.1",
     "@vitejs/plugin-react": "^2.1.0",
+    "concurrently": "^7.4.0",
     "eslint": "^8.23.0",
     "eslint-config-custom": "*",
     "tsconfig": "*",

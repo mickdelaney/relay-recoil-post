@@ -8,6 +8,7 @@ const fragment = graphql`
     id
     name
     email
+    phone
   }
 `;
 
@@ -26,6 +27,7 @@ export const UserItem: FunctionComponent<Props> = ({
     <div key={data.id}>
       <h3>{data.name}</h3>
       <p>{data.email}</p>
+      <p>{data.phone}</p>
     </div>
   );
 }

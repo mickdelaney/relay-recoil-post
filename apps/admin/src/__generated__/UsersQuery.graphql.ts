@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a2082738ce8b70f5430c4cbab51d0aa4>>
+ * @generated SignedSource<<b8104a289a90bce63911f36a190d3022>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -110,6 +110,13 @@ return {
                 "kind": "ScalarField",
                 "name": "email",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "phone",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -120,12 +127,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "6e2d7ba60560ec09751f10b7629c9a60",
+    "cacheID": "84d79f778dea000aa66deede9f8ec932",
     "id": null,
     "metadata": {},
     "name": "UsersQuery",
     "operationKind": "query",
-    "text": "query UsersQuery {\n  users {\n    data {\n      id\n      name\n      ...UserItem_user\n    }\n  }\n}\n\nfragment UserItem_user on User {\n  id\n  name\n  email\n}\n"
+    "text": "query UsersQuery {\n  users {\n    data {\n      id\n      name\n      ...UserItem_user\n    }\n  }\n}\n\nfragment UserItem_user on User {\n  id\n  name\n  email\n  phone\n}\n"
   }
 };
 })();
