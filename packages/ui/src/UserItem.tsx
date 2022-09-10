@@ -24,7 +24,7 @@ export const UserItem: FunctionComponent<Props> = ({ userRef }) => {
   return (
     <div className='border bg-white p-2 mb-2' key={data.id}>
       <h3>{data.name}</h3>
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-between text-gray-500'>
         <div><p>{data.email}</p></div>
         <div><p>{data.phone}</p></div>
       </div>

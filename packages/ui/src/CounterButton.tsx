@@ -6,7 +6,14 @@ import {
 
 export const buttonCountState = atom({
   key: 'buttonCount', // unique ID (with respect to other atoms/selectors)
-  default: 0, // default value (aka initial value)
+  default: 0, // default value (aka initial value),
+  effects: [
+    ({onSet}) => {
+      onSet(count => {
+        console.debug("Current Count: ", count);
+      });
+    },
+  ],
 });
 
 export const CounterButton = () => {

@@ -1,28 +1,24 @@
-import * as React from "react";
-import "./App.css";
-import { CounterButton } from "ui";
-import { Users } from "./Users";
+import './App.css';
+import { ReactLocationDevtools } from '@tanstack/react-location-devtools';
+import {
+  Link,
+  MakeGenerics,
+  Outlet,
+  ReactLocation,
+  Router,
+  useMatch,
+} from '@tanstack/react-location';
+
+import { HomePage } from './pages';
+
+const location = new ReactLocation();
 
 function App() {
   return (
-    <div className="container">
-      <main className="m-8">
-        
-        <div className="flex bg-gray-100 mb-4 p-4">
-
-          <CounterButton />
-
-        </div>
-
-        <div className="bg-blue-100 border p-4">
-          
-          <Users />        
-
-        </div>
-
-  
-      </main>
-    </div>
+    <Router
+      location={location}
+      routes={[{ path: '/', element: <HomePage /> }]}
+    />
   );
 }
 

@@ -13,7 +13,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
-  "devDependencies": {
+  "dependencies": {
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "turbo": "latest"
