@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<03c2930550d569cb6074d89d0bf73bea>>
+ * @generated SignedSource<<196cdaf1cc97572afcc1a5abc0813773>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,9 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type UserItem_user$data = {
+  readonly company: {
+    readonly name: string | null;
+  } | null;
   readonly email: string | null;
   readonly id: string | null;
   readonly name: string | null;
@@ -22,7 +25,15 @@ export type UserItem_user$key = {
   readonly " $fragmentSpreads": FragmentRefs<"UserItem_user">;
 };
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+};
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
@@ -35,13 +46,7 @@ const node: ReaderFragment = {
       "name": "id",
       "storageKey": null
     },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "name",
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -55,12 +60,25 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "phone",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Company",
+      "kind": "LinkedField",
+      "name": "company",
+      "plural": false,
+      "selections": [
+        (v0/*: any*/)
+      ],
+      "storageKey": null
     }
   ],
   "type": "User",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "33256e8d3361664877ca416347efa06e";
+(node as any).hash = "f4de962c5cad9d2ae4368073000546b5";
 
 export default node;
