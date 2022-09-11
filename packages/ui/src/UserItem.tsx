@@ -1,7 +1,10 @@
-import React from "react";
-import { FunctionComponent } from "react";
-import { graphql, useFragment, useLazyLoadQuery } from "react-relay";
-import type { UserItem_user$key } from "./__generated__/UserItem_user.graphql";
+import React from 'react';
+import { FunctionComponent } from 'react';
+import { graphql, useFragment, useLazyLoadQuery } from 'react-relay';
+import type {
+  UserItem_user$data,
+  UserItem_user$key,
+} from './__generated__/UserItem_user.graphql';
 
 const fragment = graphql`
   fragment UserItem_user on User {
@@ -17,16 +20,27 @@ const fragment = graphql`
 
 type Props = {
   userRef: UserItem_user$key;
+  onSelect: (item: UserItem_user$data) => void;
 };
 
-export const UserItem: FunctionComponent<Props> = ({ userRef }) => {
+export const UserItem: FunctionComponent<Props> = ({ userRef, onSelect }) => {
   const data = useFragment<UserItem_user$key>(fragment, userRef);
   return (
-    <div className='border bg-white p-2 mb-2' key={data.id}>
+    <div className='mb-2 border bg-white p-2' key={data.id}>
       <h3>{data.name}</h3>
       <div className='flex items-center justify-between text-gray-500'>
-        <div><p>{data.email}</p></div>
-        <div><p>{data.phone}</p></div>
+        <div>
+          <p>{data.email}</p>
+        </div>
+        <div>
+          <p>{data.phone}</p>
+        </div>
+        <div>
+          <button 
+            className='text-blue-500' 
+            onClick={() => onSelect(data)}>Select
+          </button>
+        </div>
       </div>
     </div>
   );

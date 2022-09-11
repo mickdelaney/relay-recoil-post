@@ -1,3 +1,4 @@
+import { useNavigate } from "@tanstack/react-location";
 import { graphql, useLazyLoadQuery } from "react-relay";
 import { UserItem } from "ui";
 import type { UsersQuery } from "./__generated__/UsersQuery.graphql";
@@ -15,6 +16,7 @@ const query = graphql`
 `;
 
 export function Users() {
+  const navigate = useNavigate();
   const data = useLazyLoadQuery<UsersQuery>(
     query,
     {},
@@ -27,7 +29,14 @@ export function Users() {
     if (!u) {
       return null;
     }
-    return <UserItem key={u?.id} userRef={u} />;
+    return (
+      <UserItem 
+        key={u?.id} userRef={u} 
+        onSelect={(i) => {
+          navigate({ to: './user', replace: true })
+        }}
+      />
+    )
   });
 
   return <div>{rows}</div>;

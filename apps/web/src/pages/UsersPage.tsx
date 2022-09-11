@@ -1,4 +1,4 @@
-import { MakeGenerics, useMatch } from '@tanstack/react-location';
+import { MakeGenerics, useMatch, useNavigate } from '@tanstack/react-location';
 import { FC } from 'react';
 import { graphql, PreloadedQuery, usePreloadedQuery } from 'react-relay';
 import { UserItem } from 'ui';
@@ -26,13 +26,21 @@ type LocationGenerics = MakeGenerics<{
 export const UsersList: FC<{ queryRef: PreloadedQuery<UsersPageQuery> }> = ({
   queryRef,
 }) => {
+  const navigate = useNavigate();
   const data = usePreloadedQuery<UsersPageQuery>(usersPageGraphQL, queryRef!!);
 
   const rows = (data?.users?.data ?? []).map(u => {
     if (!u) {
       return null;
     }
-    return <UserItem key={u?.id} userRef={u} />;
+    return (
+      <UserItem 
+        key={u?.id} userRef={u} 
+        onSelect={(i) => {
+          navigate({ to: 'user', replace: true })
+        }}
+      />
+    )
   });
   return (
     <div className='border bg-blue-100 p-4'>
