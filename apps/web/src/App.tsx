@@ -1,26 +1,23 @@
-import './App.css';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { loadQuery } from 'react-relay';
 import { ReactLocationDevtools } from '@tanstack/react-location-devtools';
 import {
-  Link,
-  MakeGenerics,
   Outlet,
   ReactLocation,
   Router,
-  useMatch,
 } from '@tanstack/react-location';
 
-import { HomePage } from './pages';
-import { UsersPage, usersPageGraphQL } from './pages/UsersPage';
-import { ErrorBoundary } from 'react-error-boundary';
-import { Suspense } from 'react';
+import './App.css';
+import Environment from './RelayEnvironment';
+
+import { HomePage, UsersPage, UserPage } from './pages';
 import { ErrorFallback, Layout, Loading, myErrorHandler } from './components';
-import { loadQuery } from 'react-relay';
-import { useQueryLoader } from 'react-relay';
+
 import UsersPageQueryDef, { UsersPageQuery } from './pages/__generated__/UsersPageQuery.graphql';
+import UserPageQueryDef, { UserPageQuery } from './pages/__generated__/UserPageQuery.graphql';
 
 const location = new ReactLocation();
-
-import Environment from './RelayEnvironment';
 
 function App() {
 
@@ -35,15 +32,31 @@ function App() {
           element: <UsersPage  />,
           loader: async () => {
             return {
-              queryRef: loadQuery<UsersPageQuery>(
+              usersQuery: loadQuery<UsersPageQuery>(
                 Environment,
                 UsersPageQueryDef,
                 {},
                 {
                   fetchPolicy: 'network-only',
                 },
-              ), 
+              ),
             }
+          },
+        },
+        {
+          path: '/user/:id',
+          element: <UserPage  />,
+          loader: async ({ params }: any) => {
+            return {
+              userQuery: loadQuery<UserPageQuery>(
+                Environment,
+                UserPageQueryDef,
+                { id: params.id },
+                {
+                  fetchPolicy: 'network-only',
+                },
+              ),
+            };
           },
         },
       ],

@@ -2,12 +2,11 @@ import React from 'react';
 import { FunctionComponent } from 'react';
 import { graphql, useFragment } from 'react-relay';
 import type {
-  UserItem_user$data,
-  UserItem_user$key,
-} from './__generated__/UserItem_user.graphql';
+  UserDetails_user$key,
+} from './__generated__/UserDetails_user.graphql';
 
 const fragment = graphql`
-  fragment UserItem_user on User {
+  fragment UserDetails_user on User {
     id
     name
     email
@@ -19,16 +18,13 @@ const fragment = graphql`
 `;
 
 type Props = {
-  userRef: UserItem_user$key;
-  onSelect: (item: UserItem_user$data) => void;
+  userRef: UserDetails_user$key;
 };
 
-export const UserItem: FunctionComponent<Props> = ({ userRef, onSelect }) => {
-  const data = useFragment<UserItem_user$key>(fragment, userRef);
+export const UserDetails: FunctionComponent<Props> = ({ userRef }) => {
+  const data = useFragment<UserDetails_user$key>(fragment, userRef);
   return (
-    <div
-      onClick={() => onSelect(data)}
-      className='mb-2 border bg-white p-2 cursor-pointer hover:border-gray-300 hover:bg-gray-50' key={data.id}>
+    <div className='mb-2 border bg-white p-2' key={data.id}>
       <h3>{data.name}</h3>
       <div className='flex items-center justify-between text-gray-500'>
         <div>

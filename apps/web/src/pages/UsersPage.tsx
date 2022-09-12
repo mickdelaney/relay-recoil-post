@@ -5,7 +5,7 @@ import { UserItem } from 'ui';
 import { Users } from '../components';
 import { UsersPageQuery } from './__generated__/UsersPageQuery.graphql';
 
-export const usersPageGraphQL = graphql`
+const query = graphql`
   query UsersPageQuery {
     users {
       data {
@@ -19,7 +19,7 @@ export const usersPageGraphQL = graphql`
 
 type LocationGenerics = MakeGenerics<{
   LoaderData: {
-    queryRef: PreloadedQuery<UsersPageQuery>;
+    usersQuery: PreloadedQuery<UsersPageQuery>;
   };
 }>;
 
@@ -27,7 +27,7 @@ export const UsersList: FC<{ queryRef: PreloadedQuery<UsersPageQuery> }> = ({
   queryRef,
 }) => {
   const navigate = useNavigate();
-  const data = usePreloadedQuery<UsersPageQuery>(usersPageGraphQL, queryRef!!);
+  const data = usePreloadedQuery<UsersPageQuery>(query, queryRef!!);
 
   const rows = (data?.users?.data ?? []).map(u => {
     if (!u) {
@@ -37,7 +37,7 @@ export const UsersList: FC<{ queryRef: PreloadedQuery<UsersPageQuery> }> = ({
       <UserItem 
         key={u?.id} userRef={u} 
         onSelect={(i) => {
-          navigate({ to: 'user', replace: true })
+          navigate({ to: `../user/${i.id}`, replace: true })
         }}
       />
     )
@@ -55,10 +55,10 @@ export const UsersList: FC<{ queryRef: PreloadedQuery<UsersPageQuery> }> = ({
 
 export const UsersPage: FC =()=> {
   const {
-    data: { queryRef },
+    data: { usersQuery },
   } = useMatch<LocationGenerics>();
 
-  if (!queryRef) {
+  if (!usersQuery) {
     return <div>Loading....</div>;
   }
 
@@ -66,7 +66,7 @@ export const UsersPage: FC =()=> {
     <>
       <div className='border-b bg-white p-4'>Users</div>
 
-      <UsersList queryRef={queryRef} />
+      <UsersList queryRef={usersQuery} />
     </>
   );
 };
