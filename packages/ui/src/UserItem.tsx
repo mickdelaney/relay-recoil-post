@@ -28,7 +28,7 @@ export const UserItem: FunctionComponent<Props> = ({ userRef, onSelect }) => {
   return (
     <div
       onClick={() => onSelect(data)}
-      className='mb-2 border bg-white p-2 cursor-pointer hover:border-gray-300 hover:bg-gray-50' key={data.id}>
+      className='mb-2 border bg-white px-3 py-2 cursor-pointer hover:border-gray-300 hover:bg-gray-50' key={data.id}>
       <h3>{data.name}</h3>
       <div className='flex items-center justify-between text-gray-500'>
         <div>

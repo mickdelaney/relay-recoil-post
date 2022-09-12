@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d5026a096f05b32639f6643a8184d459>>
+ * @generated SignedSource<<cb87b5a05e9f5a39361e90b792cc4cf9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,12 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type UserDetails_user$data = {
+  readonly address: {
+    readonly city: string | null;
+    readonly street: string | null;
+    readonly suite: string | null;
+    readonly zipcode: string | null;
+  } | null;
   readonly company: {
     readonly name: string | null;
   } | null;
@@ -64,6 +70,45 @@ return {
     {
       "alias": null,
       "args": null,
+      "concreteType": "Address",
+      "kind": "LinkedField",
+      "name": "address",
+      "plural": false,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "street",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "suite",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "city",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "zipcode",
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
       "concreteType": "Company",
       "kind": "LinkedField",
       "name": "company",
@@ -79,6 +124,6 @@ return {
 };
 })();
 
-(node as any).hash = "4723d31d55015ec89e4ceb122d8bd0b0";
+(node as any).hash = "8109bf9b6f0690a0cee4c64265e57f0a";
 
 export default node;

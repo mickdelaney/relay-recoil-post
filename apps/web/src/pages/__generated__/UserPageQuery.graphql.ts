@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6878c2f6f66986b4d15bc7dc8d8f2fa4>>
+ * @generated SignedSource<<af12f1d830c47232761602f51499c8de>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -114,6 +114,45 @@ return {
           {
             "alias": null,
             "args": null,
+            "concreteType": "Address",
+            "kind": "LinkedField",
+            "name": "address",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "street",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "suite",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "city",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "zipcode",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
             "concreteType": "Company",
             "kind": "LinkedField",
             "name": "company",
@@ -129,12 +168,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8d84e4e848a96f558535b1ced352fbb3",
+    "cacheID": "e9d3a401318b6434064704fefa4d0371",
     "id": null,
     "metadata": {},
     "name": "UserPageQuery",
     "operationKind": "query",
-    "text": "query UserPageQuery(\n  $id: ID!\n) {\n  user(id: $id) {\n    id\n    ...UserDetails_user\n  }\n}\n\nfragment UserDetails_user on User {\n  id\n  name\n  email\n  phone\n  company {\n    name\n  }\n}\n"
+    "text": "query UserPageQuery(\n  $id: ID!\n) {\n  user(id: $id) {\n    id\n    ...UserDetails_user\n  }\n}\n\nfragment UserDetails_user on User {\n  id\n  name\n  email\n  phone\n  address {\n    street\n    suite\n    city\n    zipcode\n  }\n  company {\n    name\n  }\n}\n"
   }
 };
 })();
